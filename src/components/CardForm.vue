@@ -90,7 +90,7 @@
 import CreditCard from "./CreditCard.vue";
 import { IMaskDirective } from "vue-imask";
 import { cardMasks, cvvMask } from "@/masks";
-import axios from "axios"
+import axios from "axios";
 export default {
   name: "CardForm",
   components: {
@@ -115,22 +115,22 @@ export default {
   },
   methods: {
     async submitCard() {
-      let result = await axios.post("http://localhost:3000/cards",{
-      cardNumber: this.cardNumber,
-      name: this.name,
-      expireMonth: this.expireMonth,
-      expireYear: this.expireYear,
-      cvv: this.cvv
+      let result = await axios.post("http://localhost:3000/cards", {
+        cardNumber: this.cardNumber,
+        name: this.name,
+        expireMonth: this.expireMonth,
+        expireYear: this.expireYear,
+        cvv: this.cvv,
       });
 
-      if (result.status == 201){
-alert('card details collected')
-      }
-      alert(`
+      if (result.status == 201) {
+        alert(`
         ${this.cardNumber}\n
         ${this.name}\n
         ${this.expireMonth}/${this.expireYear}\n
         ${this.cvv}`);
+      }
+      this.$router.push({ name: "Success" });
     },
     onAcceptCardType(e) {
       const maskRef = e.detail;

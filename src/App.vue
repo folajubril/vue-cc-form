@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <CardForm />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import CardForm from "./components/CardForm";
 
 export default {
   name: "app",
-  components: {
-    CardForm
-  }
+ 
 };
 </script>
 
